@@ -1,3 +1,6 @@
+# make sure to install these packages before running:
+# pip install pandas
+
 import pandas as pd
 
 # Read the csv file
