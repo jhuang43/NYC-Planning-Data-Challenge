@@ -44,7 +44,7 @@ results['created_date_hour'] = pd.to_datetime(results['created_date_hour'])
 results['count'] = pd.to_numeric(results['count'])
 
 # Adjust plot size and axis labels
-plt.figure(figsize=(11.5,8), dpi=150, tight_layout = True)
+plt.figure(figsize=(11,8.5), dpi=150, tight_layout = True)
 plt.xlabel('Created Date')
 plt.ylabel('Count of Complaints')
 
