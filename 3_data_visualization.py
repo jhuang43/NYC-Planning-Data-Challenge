@@ -45,7 +45,7 @@ results['count'] = pd.to_numeric(results['count'])
 
 # Adjust plot size and axis labels
 plt.figure(figsize=(11.5,8), dpi=150, tight_layout = True)
-plt.xlabel('Date & Time')
+plt.xlabel('Created Date & Hour')
 plt.ylabel('Count of Complaints')
 
 # Create a multi-line plot based on the count of each complaint over date/time
@@ -53,3 +53,6 @@ sns.lineplot(data = results, hue = 'complaint_type', x = 'created_date_hour', y 
 
 # Show plot
 plt.show(block=False)
+
+# Download plot as png image and save to data folder
+plt.savefig('./data/timeseries.png')
