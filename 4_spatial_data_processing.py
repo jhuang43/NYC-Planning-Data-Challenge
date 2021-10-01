@@ -10,7 +10,6 @@ from matplotlib import pyplot as plt
 # Close any previously opened plots
 plt.close('all')
 
-# Retrieve geodata of the 2020 Neighborhood Tabulation Areas (NTAs) and convert to json
 # Retrieve geodata of the 2020 Neighborhood Tabulation Areas (NTAs)
 url = "https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/NYC_Neighborhood_Tabulation_Areas_2020/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=pgeojson"
 geodata = gpd.read_file(url)
