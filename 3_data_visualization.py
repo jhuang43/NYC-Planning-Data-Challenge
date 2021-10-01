@@ -45,7 +45,7 @@ results['count'] = pd.to_numeric(results['count'])
 
 # Adjust plot size and axis labels
 plt.figure(figsize=(11.5,8), dpi=150, tight_layout = True)
-plt.xlabel('Created Date & Hour')
+plt.xlabel('Created Date')
 plt.ylabel('Count of Complaints')
 
 # Create a multi-line plot based on the count of each complaint over date/time
