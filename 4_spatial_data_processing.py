@@ -17,8 +17,10 @@ geodata = gpd.read_file(url)
 # Read the raw.csv file 
 raw = pd.read_csv('./data/raw.csv')
 
+complaint = 'UNSANITARY CONDITION'
+
 # Selecting all rows with a specific complaint_type
-raw = raw.loc[raw['complaint_type'] == 'UNSANITARY CONDITION']
+raw = raw.loc[raw['complaint_type'] == complaint]
 raw.reset_index(drop=True)
 
 # Converting raw into a geoDataFrame 
@@ -34,3 +36,27 @@ merge = gpd.sjoin(gpd_raw, geodata, how="inner", op="within")
 
 # merge.plot()
 # plt.show(block=False)
+
+# Creating a dataframe that holds the NTA2020 area and count number
+NTA_countdf = (merge.groupby("NTA2020").size()).reset_index()
+NTA_countdf.columns = ['NTA2020', 'NTA_counts']
+
+# Merging count to geodata and filling NaN count values as 0
+choropleth_df = geodata.merge(NTA_countdf, on="NTA2020", how="outer")
+choropleth_df['NTA_counts'] = choropleth_df['NTA_counts'].fillna(0)
+
+# Setting size, title, and axis of map
+fig, ax = plt.subplots(1, figsize=(11,8.5))
+ax.set_title(f"# OF {complaint} COMPLAINTS OVER 7 DAYS")
+ax.axis('off')
+
+# Setting colorbar of map
+countmin, countmax = 0, choropleth_df['NTA_counts'].max()
+choropleth_color = plt.cm.ScalarMappable(cmap="Blues", norm = plt.Normalize(vmin = countmin, vmax = countmax))
+choropleth_color.set_array([])
+fig.colorbar(choropleth_color)
+
+# Creating choropleth based on NTA_counts, 
+choropleth_df.plot(column = 'NTA_counts', cmap = 'Blues', linewidth= 1.0, ax = ax)
+plt.show(block = False)
+plt.savefig(f'./data/choropleth of {complaint}.png')
