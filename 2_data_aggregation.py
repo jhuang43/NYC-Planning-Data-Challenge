@@ -2,6 +2,30 @@
 # pip install pandas
 
 import pandas as pd
+import os
+
+def save_as_csv(file_df, name='file'):
+    """Saves DataFrame as a csv file.
+
+    If the argument `name` isn't passed in, the file's name will be 'file.csv'.
+
+    Parameters
+    ----------
+    file_df : DataFrame
+    The DataFrame that will be converted to csv
+
+    name : str, optional
+    The name the csv will be saved as
+    """
+
+    # Check to see if a data folder exists, if not, make a folder named "data"
+    if not os.path.exists('./data'): 
+        os.mkdir('./data')
+
+    # Convert and download as csv to the data folder without the index    
+    file_df.to_csv(f'./data/{name}.csv', index=False)
+
+
 
 # Read the csv file
 results = pd.read_csv('./data/raw.csv')
@@ -26,4 +50,4 @@ timeseries = pd.DataFrame.drop_duplicates(timeseries)
 # timeseries['count'].sum()
 
 # Convert and download as "timeseries.csv" to the data folder without the index
-timeseries.to_csv('./data/timeseries.csv', index = False)
+save_as_csv(timeseries, 'timeseries')
