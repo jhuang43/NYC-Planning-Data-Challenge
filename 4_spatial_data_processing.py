@@ -1,6 +1,9 @@
+# make sure to install these packages before running:
 # On Windows, geopandas dependencies are a bit tricky. Refer to https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows
 # geopandas dependencies: pandas (requires GDAL), fiona, pyproj, shapely
 # pip install geopandas
+# pip install matplotlib
+# pip install pandas
 
 import geopandas as gpd
 from matplotlib import pyplot as plt
@@ -8,7 +11,7 @@ import pandas as pd
 import os
 
 def create_choropleth(raw_csv, specific_complaint='UNSANITARY CONDITION'):
-    """Creates Choropleth map from geodata and csv file.
+    """Creates Choropleth map from geodata of 2020 Neighborhood Tabulation Areas (NTAs) and csv file.
 
     If the argument `specific_complaint` isn't passed in, the complaint that will be passed will be 'UNSANITARY CONDITION'.
     
@@ -53,7 +56,7 @@ def create_choropleth(raw_csv, specific_complaint='UNSANITARY CONDITION'):
     ax.set_title(f"# OF {specific_complaint} COMPLAINTS OVER 7 DAYS")
     ax.axis('off')
 
-    # Setting colorbar of map
+    # Creating colorbar for map
     countmin, countmax = 0, choropleth_df['NTA_counts'].max()
     choropleth_color = plt.cm.ScalarMappable(cmap="Blues", norm = plt.Normalize(vmin = countmin, vmax = countmax))
     choropleth_color.set_array([])
