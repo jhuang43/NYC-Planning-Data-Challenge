@@ -33,7 +33,7 @@ This task used the previously saved `raw.csv` to create a timeseries csv file.
 - Dropped duplicates records
 - Saved as `timeseries.csv` file into `data` folder
 ## Task 3 - 3_data_visualization.py
-This task was to create a timeseries multi-line plot and save as a `.png` file. When multi-line plot was initially created, values would not drop to 0 (indicating there were no complaints), so I made a Cartesian product of all the `created_date_hour` and `complaint_types` to fill in those records.
+This task was to create a timeseries multi-line plot and save as a `.png` file. When multi-line plot was initially created, values would not drop to 0 (indicating there were no complaints), so the Cartesian product of all the `created_date_hour` and `complaint_types` was made to fill in those records.
 - Created Cartesian product of all `created_date_hour` and all `complaint_types`
 - Merged the `timeseries.csv` and Cartesian product
 - Replaced NaN values with 0's
@@ -53,4 +53,4 @@ This task was to load `raw.csv` and the csv created in Task 2 (`timeseries.csv`)
 - Changed datetime columns of the `.csv` files into timestamps datatypes
 - Created/replaced tables in the database
 ## Task 6
-I was unable to complete this task within the time constraint.
+Was unable to complete this task within the time constraints.
