@@ -42,7 +42,7 @@ This task was to create a timeseries multi-line plot and save as a `.png` file. 
 ## Task 4 - 4_spatial_data_processing.py
 This task was to join the [2020 NTA (Neighborhood Tabulation Area) boundaries data](https://www1.nyc.gov/site/planning/data-maps/open-data/census-download-metadata.page) with `raw.csv` to create a choropleth map of a specific complaint's count for the last 7 days
 - Retrieved GeoJSON data from site through **geopandas**
-- Filtered for a specific `complaint_type` and created a `geometry` column for the `raw.csv` with the `longitude` and `latitude` columns
+- Filtered for a specific `complaint_type` and created a `geometry` column for the `raw.csv` using the `longitude` and `latitude` columns
 - Did a spatial join to confirm all points were within the GeoJSON dataFrame
 - Created a new DataFrame consisting of to get counts of the NTA areas and merged it with the GeoJSON dataFrame
 - Created choropleth map based on the NTA area counts and a colorbar to match
