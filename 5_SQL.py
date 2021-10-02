@@ -34,7 +34,6 @@ def create_table(engine, csv_filename, tablename):
     csv_df.to_sql (tablename, engine, if_exists='replace', index=False)
 
 
-
 # Postgres info
 username = 'postgres'
 password = 'password'
@@ -46,3 +45,6 @@ engine = create_engine(f'postgresql://{username}:{password}@localhost:{localhost
 
 create_table(engine, 'raw', 'sample_311')
 create_table(engine, 'timeseries', 'timeseries')
+
+# Dispose engine
+engine.dispose()
