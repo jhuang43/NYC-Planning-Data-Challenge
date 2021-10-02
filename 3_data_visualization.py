@@ -6,6 +6,27 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
+import os
+
+def save_plt_as_png(name='file'):
+    """Saves plot as a png file.
+
+    If the argument `name` isn't passed in, the file's name will be 'file.png'.
+
+    Parameters
+    ----------
+    name : str, optional
+    The name the csv will be saved as
+    """
+
+    # Check to see if a data folder exists, if not, make a folder named "data"
+    if not os.path.exists('./data'): 
+        os.mkdir('./data')
+
+    # Convert and download as png to the data folder    
+    plt.savefig(f'./data/{name}.png')
+
+
 
 # Read the csv file
 results = pd.read_csv('./data/timeseries.csv')
@@ -55,4 +76,4 @@ sns.lineplot(data = results, hue = 'complaint_type', x = 'created_date_hour', y 
 plt.show(block=False)
 
 # Download plot as png image and save to data folder
-plt.savefig('./data/timeseries.png')
+save_plt_as_png('timeseries')
